@@ -1,0 +1,26 @@
+type AchievementDto {
+    id: ID!
+    goal: String
+    unlocked: Boolean!
+}
+
+type Query {
+    allAchievements: [AchievementDto]
+    getAchievement(id: ID!): AchievementDto
+}
+
+input AchievementInput {
+   goal: String
+   unlocked: Boolean
+}
+
+type Mutation {
+    addAchievement(achievement: AchievementInput) : AchievementDto
+    unlockAchievement(id: ID!) : AchievementDto
+    lockAllAchievements: [AchievementDto]
+}
+
+schema {
+    query: Query
+    mutation: Mutation
+}
